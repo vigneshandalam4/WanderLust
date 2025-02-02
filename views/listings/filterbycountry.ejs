@@ -1,0 +1,35 @@
+<% layout("/layouts/boilerplate") %>
+
+<!-- filters and tax switch -->
+<%- include("../includes/filters.ejs") %>
+
+<!-- <div class="mt-3 mb-3">
+    <% if(searchQuery){ %>
+        <h3>Listings filtered by country: <%= searchQuery %></h3>
+    <% }else{ %>
+        <h3>Listings filtered by country: \^_ALL_^/ countries</h3>
+    <% } %>
+</div> -->
+<div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-1 mt-3">
+    <% if( filteredListings.length === 0 ){ %>
+        <p style="color: red;">No listings found. 
+        Please check your spelling or try a different location. 
+        We're expanding soon and will be available in more places!</p>
+    <% } %>
+    <%for (let listing of filteredListings) {%>
+        <a href="/listings/<%= listing._id %>" class="listing-link">
+            <div class="card listing-card">
+                <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_image" style="height: 20rem;">
+                <div class="card-img-overlay"></div>
+                <div class="card-body">
+                  <p class="card-text">
+                    <b><%= listing.title %></b>
+                    <br/>
+                    &#8377;<%= listing.price.toLocaleString("en-IN") %>/night
+                    <i class="tax-info"> &nbsp; &nbsp; +18% GST = <%= listing.price+listing.price*0.18 %></i>
+                  </p>
+                </div>
+            </div>
+        </a>           
+    <%}%>
+</div>
