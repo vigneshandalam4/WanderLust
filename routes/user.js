@@ -36,4 +36,13 @@ router.route("/login")
 //logout route
 router.get("/logout", userController.logout );
 
+//miscellaneous - footer section
+router.get("/privacy",(req,res) => {
+    res.render("miscellaneous/privacy.ejs");
+});
+
+router.get("/terms",(req,res) => {
+    res.render("miscellaneous/terms.ejs");
+});
+
 module.exports = router;
