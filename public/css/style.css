@@ -25,6 +25,10 @@ body{
     color: #222222 !important;
 }
 
+.navbar-collapse{
+    background-color: white !important;
+}
+
 @media (max-width: 811px) and (min-width: 767px) {
     .addnewlstng {
         display: none;
