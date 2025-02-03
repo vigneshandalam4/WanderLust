@@ -1,0 +1,36 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Your Profile</h1>
+
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card profile-card shadow-lg">
+        <div class="card-body text-center">
+          <!-- Profile Picture -->
+          <div class="profile-pic mb-3 mt-3">
+            <img src="https://ui-avatars.com/api/?name=<%= user.username || 'User' %>&background=random&size=120&bold=true&rounded=true" 
+                 alt="Profile Picture">
+          </div>
+
+          <!-- Username -->
+          <h3 class="card-title"><%= user.username || "Anonymous" %></h3>
+          <hr>
+
+          <!-- Profile Details -->
+          <p><i class="fas fa-user"></i> <strong>Name:</strong> <%= user.username || "Not provided" %></p>
+          <p><i class="fas fa-envelope"></i> <strong>Email:</strong> <%= user.email || "Not provided" %></p>
+
+          <!-- Logout Button -->
+          <div class="mt-4 mb-3">
+            <form action="/logout" method="GET">
+              <button class="btn btn-danger btn-custom">
+                <i class="fas fa-sign-out-alt"></i> Logout
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

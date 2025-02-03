@@ -3,7 +3,7 @@ const router = express.Router();
 const User = require("../models/user.js");
 const wrapAsync = require("../utils/wrapAsync");
 const passport = require("passport");
-const { saveRedirectUrl } = require("../middleware.js");
+const { saveRedirectUrl, isLoggedIn } = require("../middleware.js");
 
 //user controller
 const userController = require("../controllers/user.js");
@@ -43,6 +43,12 @@ router.get("/privacy",(req,res) => {
 
 router.get("/terms",(req,res) => {
     res.render("miscellaneous/terms.ejs");
+});
+
+// Profile Route
+router.get('/profile', isLoggedIn, (req, res) => {
+    const user = req.user; // Assuming `req.user` contains the logged-in user's data
+    res.render('miscellaneous/profile.ejs', { user });
 });
 
 module.exports = router;
